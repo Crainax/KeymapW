@@ -370,7 +370,7 @@
   ;; If a one-shot key is held then it will act as a regular key. E.g. for os1
   ;; below, holding an @os1 key will keep lsft held and holding an @os3 key
   ;; will keep the layer set to misc.
-  os1 (one-shot 500 lsft)
+  os1 (one-shot 500 up)
   os2 (one-shot 500 C-S-lalt)
   os3 (one-shot 500 (layer-toggle misc))
 
@@ -380,7 +380,7 @@
   ;; There is another variant one-shot-release which ends on the first release
   ;; of another key.
   ;;
-  ;; There are further variants of both of these:
+                                                                                                                                                                                                                                                                                                                ;; There are further variants of both of these:
   ;; - one-shot-press-pcancel
   ;; - one-shot-release-pcancel
   ;;
@@ -420,7 +420,7 @@
   ;; mappings, either in a GitHub issue or as a pull request! This is currently
   ;; not supported with Windows using the interception driver.
   ab1 (arbitrary-code 700)
-)
+)a
 
 ;; Can see a new action `rpt` in this layer. This repeats the most recently
 ;; pressed key. Holding down the `rpt` key will not repeatedly send the key.
@@ -438,7 +438,7 @@
   _   C-z  C-x  C-c  C-v  _    _    _    @td2  @os1 @os2 @os3
   rpt rpt-any _            _              _    _    _
 )
-
+acccbb
 
 (deflayer chords      ;; you can put list actions directly in deflayer but it's ugly, so prefer aliases.
   _    _    _    _    _    _    _    _    _    _    @🙁  (unicode 😀) _    _
