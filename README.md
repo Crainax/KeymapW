@@ -1,2 +1,0 @@
-# MyKmonad
-My Kmonad keymap.
