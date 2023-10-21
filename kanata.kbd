@@ -66,11 +66,12 @@
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
   @grl 1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     del  end  pgdn
-  caps s    a    d    f    g    h    j    k    l    ;    '    ret
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft                 up
-  lctl lmet lalt           spc            ralt rmet cmp  rctl            left down rght
+  lctl lmet @laf           spc            ralt rmet cmp  rctl            left down rght
 )
 
+;;中介:按压左alt键的层
 (deflayer layers
   _    @qwr @dvk _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
@@ -84,6 +85,27 @@
   dvk (layer-switch dvorak)
   qwr (layer-switch qwerty)
   lay (layer-toggle layers)
+  ;; vim (layer-toggle vims)
 
-  grl (tap-hold 200 200 grv @lay) ;; 按压~键来固定键盘层
+  grl (tap-hold 200 200 grv @lay) ;; @grl功能: 按压~键来固定键盘层
+  ;; laf (tap-hold 200 200 lalt @vim) ;; @laf功能: 按压~键来固定键盘层
+  laf (multi lalt (layer-toggle vims)) ;;
+)
+
+;;中介:切换vim控制层
+(deflayer vims
+  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
+  _    _    _    _    _    _    _    _    end  _    _    _    _    _     _    _    _
+  _    home _    _    _    _    @alt @adn @aup @art _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _                    _
+  _    _    _              _              _    _    _    _               _    _    _
+)
+
+
+(defalias
+ alt (multi left (release-key lalt))
+ adn (multi down (release-key lalt))
+ aup (multi up   (release-key lalt))
+ art (multi rght (release-key lalt))
 )
