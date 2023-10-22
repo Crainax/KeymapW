@@ -81,6 +81,10 @@
   _    _    _              _              _    _    _    _               _    _    _
 )
 
+(deffakekeys
+  alt lalt
+)
+
 (defalias
   dvk (layer-switch dvorak)
   qwr (layer-switch qwerty)
@@ -89,23 +93,22 @@
 
   grl (tap-hold 200 200 grv @lay) ;; @grl功能: 按压~键来固定键盘层
   ;; laf (tap-hold 200 200 lalt @vim) ;; @laf功能: 按压~键来固定键盘层
-  laf (multi lalt (layer-toggle vims)) ;;
+
+  laf (layer-toggle vims) ;;
 )
 
 ;;中介:切换vim控制层
-(deflayer vims
-  _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
-  _    _    _    _    _    _    _    _    end  _    _    _    _    _     _    _    _
-  _    home _    _    _    _    @alt @adn @aup @art _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _                    _
-  _    _    _              _              _    _    _    _               _    _    _
+(
+deflayer vims
+  A-esc  A-f1 A-f2 A-f3 A-f4 A-f5 A-f6 A-f7 A-f8 A-f9 A-f10 A-f11 A-f12
+  A-grv  A-1  A-2  A-3  A-4  A-5  A-6  A-7  A-8  A-9  A-0  A--  A-=  A-bspc A-ins A-home A-pgup
+  A-tab  A-q  A-w  A-e  A-r  A-t  A-y  A-u  end  A-o  A-p  A-[  A-]  A-\   A-del A-end A-pgdn
+  A-caps home A-s  A-d  A-f  A-g  left down up   rght _    _    _
+  A-lsft A-z  A-x  A-c  A-v  A-b  A-n  _    _    _    _    _                    _
+  A-lctl _    _              _              _    _    _    _               _    _    _
 )
 
 
 (defalias
- alt (multi left (release-key lalt))
- adn (multi down (release-key lalt))
- aup (multi up   (release-key lalt))
- art (multi rght (release-key lalt))
+
 )
