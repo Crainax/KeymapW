@@ -48,7 +48,7 @@
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     del  end  pgdn
   caps a    s    d    f    g    h    j    k    l    ;    '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft                 up
-  lctl lmet lalt           spc            ralt rmet cmp  rctl            left down rght
+  lctl lmet lalt           spc            ralt rmet rctl cmp             left down rght
 )
 
 ;;游戏层:什么键都不改
@@ -58,7 +58,7 @@
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     del  end  pgdn
   caps a    s    d    f    g    h    j    k    l    ;    '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft                 up
-  lctl lmet lalt           spc            ralt rmet cmp  rctl            left down rght
+  lctl lmet lalt           spc            ralt rmet rctl cmp             left down rght
 )
 
 ;; 工作层
@@ -68,7 +68,7 @@
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     del  end  pgdn
   caps a    s    d    f    g    h    j    k    l    ;    '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft                 up
-  lctl lmet @laf           spc            ralt rmet cmp  rctl            left down rght
+  lctl lmet @laf           spc            ralt rmet rctl cmp             left down rght
 )
 
 ;;中介:按压左alt键的层
@@ -103,12 +103,12 @@ deflayer vims
   A-esc  A-f1 A-f2 A-f3 A-f4 A-f5 A-f6 A-f7 A-f8 A-f9 A-f10 A-f11 A-f12
   A-grv  A-1  A-2  A-3  A-4  A-5  A-6  A-7  A-8  A-9  A-0  A--  A-=  A-bspc A-ins A-home A-pgup
   A-tab  A-q  A-w  A-e  A-r  A-t  A-y  A-u  end  A-o  A-p  A-[  A-]  A-\   A-del A-end A-pgdn
-  A-caps home A-s  A-d  A-f  A-g  left down up   rght _    _    _
-  A-lsft A-z  A-x  A-c  A-v  A-b  A-n  _    _    _    _    _                    _
-  A-lctl _    _              _              _    _    _    _               _    _    _
+  A-caps home A-s  A-d  A-f  A-g  left down up   rght A-;  A-'  A-ret
+  _      A-z  A-x  A-c  A-v  A-b  A-n  A-m  A-,  A-.  A-/  _                        A-up
+  _      _    _              A-spc          _    _    _    _               A-left A-down A-rght
 )
 
-
-(defalias
-
-)
+;; (defalias
+;;   actrl (tap-hold 200 200 (multi lalt lctl) lctl)
+;;   ashift (tap-hold 200 200 (multi lalt lsft) lsft)
+;; )
