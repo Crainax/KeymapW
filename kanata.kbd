@@ -63,12 +63,12 @@
 
 ;; 工作层
 (deflayer dvorak
-  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
-  @grl 1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     del  end  pgdn
-  caps a    s    d    f    g    h    j    k    l    ;    '    ret
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft                 up
-  lctl lmet @laf           spc            ralt rmet rctl cmp             left down rght
+  esc   f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  @grl  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup
+  tab   q    w    e    r    t    y    u    i    o    p    [    ]    \     del  end  pgdn
+  @cls  a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft  z    x    c    v    b    n    m    ,    .    /    rsft                 up
+  lctl  lmet @laf           spc            ralt rmet rctl cmp             left down rght
 )
 
 ;;中介:按压左alt键的层
@@ -81,10 +81,6 @@
   _    _    _              _              _    _    _    _               _    _    _
 )
 
-(deffakekeys
-  alt lalt
-)
-
 (defalias
   dvk (layer-switch dvorak)
   qwr (layer-switch qwerty)
@@ -95,6 +91,7 @@
   ;; laf (tap-hold 200 200 lalt @vim) ;; @laf功能: 按压~键来固定键盘层
 
   laf (layer-toggle vims) ;;
+  cls (layer-toggle capslay) ;;
 )
 
 ;;中介:切换vim控制层
@@ -112,3 +109,25 @@ deflayer vims
 ;;   actrl (tap-hold 200 200 (multi lalt lctl) lctl)
 ;;   ashift (tap-hold 200 200 (multi lalt lsft) lsft)
 ;; )
+
+
+;;中介:切换Capslock控制层
+(
+deflayer capslay
+  caps _       _      _      _     _    _    _    _    _    _    _    _
+  _    _       _      _      _     _    _    _    _    _    _    _    _    _     _    _    _
+  _    @scnew  @srnu  @screm @scsw _    _    _    _    _    _    _    _    _     _    _    _
+  _    @srnl   @srnd  @srnr  _     _    _    _    _    _    _    _    _
+  _    C-pgup  C-pgdn _      _     _    _    _    _    _    _    _                    _
+  _    _       _                   _              _    _    _    _               _    _    _
+)
+
+(defalias
+  srnu (multi lctl lmet up)
+  srnl (multi lctl lmet left)
+  srnd (multi lctl lmet down)
+  srnr (multi lctl lmet rght)
+  scnew (multi lctl lmet d)
+  screm (multi lctl lmet f4)
+  scsw (multi lsft lmet left)
+)
