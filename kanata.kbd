@@ -114,12 +114,12 @@ deflayer vims
 ;;中介:切换Capslock控制层
 (
 deflayer capslay
-  caps _       _      _      _     _    _    _    _    _    _    _    _
-  _    _       _      _      _     _    _    _    _    _    _    _    _    _     _    _    _
-  _    @scnew  @srnu  @screm @scsw _    _    _    _    _    _    _    _    _     _    _    _
-  _    @srnl   @srnd  @srnr  _     _    _    _    _    _    _    _    _
-  _    C-pgup  C-pgdn _      _     _    _    _    _    _    _    _                    _
-  _    _       _                   _              _    _    _    _               _    _    _
+  caps _       _      _      _     _    _    _     _     _     _    _    _
+  _    _       _      _      _     _    _    _     _     _     _    _    _    _     _    _    _
+  _    @scnew  @srnu  @screm @scsw _    _    mlft  @msru mrgt  _    _    _    _     _    _    _
+  _    @srnl   @srnd  @srnr  _     _    _    @msrl @msrd @msrr _    _    _
+  _    C-pgup  C-pgdn _      _     _    _    mbck  _     mfwd  _    _                    _
+  _    _       _                   _               _     _     _    _               _    _    _
 )
 
 (defalias
@@ -130,4 +130,8 @@ deflayer capslay
   scnew (multi lctl lmet d)
   screm (multi lctl lmet f4)
   scsw (multi lsft lmet left)
+  msrr (mwheel-right 50 120)
+  msrl (mwheel-left 50 120)
+  msru (mwheel-up 50 120)
+  msrd (mwheel-down 50 120)
 )
