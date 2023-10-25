@@ -74,7 +74,7 @@
 
 ;;中介:按压左alt键的层
 (deflayer layers
-  _    @qwr @dvk @mxd _    _    _    _    _    _    _    _    _
+  _    @qwr @dvk _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _
@@ -85,15 +85,14 @@
 (defalias
   dvk (layer-switch dvorak)
   qwr (layer-switch qwerty)
-  mxd (layer-switch maple)
+  ;; mxd (layer-switch maple)
   lay (layer-toggle layers)
-  ;; vim (layer-toggle vims)
 
-  grl (tap-hold 200 200 grv @lay) ;; @grl功能: 按压~键来固定键盘层
-  ;; laf (tap-hold 200 200 lalt @vim) ;; @laf功能: 按压~键来固定键盘层
+  grl	(tap-hold 200 200 grv @lay) ;; @grl功能: 按压~键来固定键盘层
+  ;; laf(tap-hold 200 200 lalt @vim) ;; @laf功能: 按压~键来固定键盘层
 
   laf (multi (release-key alt) (layer-toggle vims)) ;;
-  laf2 (multi (release-key alt) (layer-toggle vims2)) ;;
+  ;; laf2 (multi (release-key alt) (layer-toggle vims2)) ;;
   ;; laf2 (layer-toggle vims2) ;;
   cls (multi (release-key alt) (layer-toggle capslay)) ;;
 )
@@ -102,7 +101,7 @@
 (
 deflayer vims
   A-esc  A-f1 A-f2 A-f3 A-f4 A-f5 A-f6 A-f7 A-f8 A-f9 A-f10 A-f11 A-f12
-  A-grv  A-1  A-2  A-3  A-4  A-5  A-6  A-7  A-8  A-9  A-0  A--  A-=  A-bspc A-ins A-home A-pgup
+  @agrv  A-1  A-2  A-3  A-4  A-5  A-6  A-7  A-8  A-9  A-0  A--  A-=  A-bspc A-ins A-home A-pgup
   @atab  A-q  A-w  A-e  A-r  A-t  A-y  A-u  end  A-o  A-p  A-[  A-]  A-\   A-del A-end A-pgdn
   A-caps home A-s  A-d  A-f  A-g  left down up   rght A-;  A-'  A-ret
   _      A-z  A-x  A-c  A-v  A-b  A-n  A-m  A-,  A-.  A-/  _                        A-up
@@ -114,15 +113,16 @@ deflayer vims
   _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _
-  _    _    _    _    _    _    left _    _    rght _    _    _
+  _    left _    rght _    _    left _    _    rght _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _                    _
   _    _    _              _              _    _    _    _               _    _    _
 )
 
 (defalias
-  actrl (tap-hold 200 200 (multi lalt lctl) lctl)
-  ashift (tap-hold 200 200 (multi lalt lsft) lsft)
-  atab (multi ralt (macro tab) (layer-toggle switch))
+  actrl	(tap-hold 200 200(multi lalt lctl) lctl) ;; alt+ctrl键的操作
+  ashift(tap-hold 200 200(multi lalt lsft) lsft) ;; alt+shift键的操作
+  atab	(multi ralt(macro tab) (layer-toggle switch)) ;; alt+tab键的操作
+  agrv C-S-A-M-1  ;;在垃圾冒险岛里通过alt+`键解决按键不抬起来的问题
 )
 
 
@@ -138,36 +138,36 @@ deflayer capslay
 )
 
 (defalias
-  srnu (multi lctl lmet up)
-  srnl (multi lctl lmet left)
-  srnd (multi lctl lmet down)
-  srnr (multi lctl lmet rght)
-  scnew (multi lctl lmet d)
-  screm (multi lctl lmet f4)
-  scsw (multi lsft lmet left)
-  msrr (mwheel-right 50 120)
-  msrl (mwheel-left 50 120)
-  msru (mwheel-up 50 120)
-  msrd (mwheel-down 50 120)
+  srnu	(multi lctl lmet up)
+  srnl	(multi lctl lmet left)
+  srnd	(multi lctl lmet down)
+  srnr	(multi lctl lmet rght)
+  scnew	(multi lctl lmet d)
+  screm	(multi lctl lmet f4)
+  scsw	(multi lsft lmet left)
+  msrr	(mwheel-right 50 120)
+  msrl	(mwheel-left 50 120)
+  msru	(mwheel-up 50 120)
+  msrd	(mwheel-down 50 120)
 )
 
 ;;冒险岛专用
-(deflayer maple
-  esc   f1   f2    f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
-  @grl  1    2     3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup
-  tab   q    w     e    r    t    y    u    i    o    p    [    ]    \     del  end  pgdn
-  @cls  a    s     d    f    g    h    j    k    l    ;    '    ret
-  lsft  z    x     c    v    b    n    m    ,    .    /    rsft                 up
-  lctl  lmet @laf2           spc            ralt rmet rctl cmp             left down rght
-)
+;; (deflayer maple
+;;   esc   f1   f2    f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+;;   @grl  1    2     3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup
+;;   tab   q    w     e    r    t    y    u    i    o    p    [    ]    \     del  end  pgdn
+;;   @cls  a    s     d    f    g    h    j    k    l    ;    '    ret
+;;   lsft  z    x     c    v    b    n    m    ,    .    /    rsft                 up
+;;   lctl  lmet @laf2           spc            ralt rmet rctl cmp             left down rght
+;; )
 
 ;;中介:切换vim控制层
-(
-deflayer vims2
-  A-esc  A-f1 A-f2 A-f3 A-f4 A-f5 A-f6 A-f7 A-f8 A-f9 A-f10 A-f11 A-f12
-  C-A-S-M-1  A-1  A-2  A-3  A-4  A-5  A-6  A-7  A-8  A-9  A-0  A--  A-=  A-bspc A-ins A-home A-pgup
-  _      A-q  A-w  A-e  A-r  A-t  A-y  A-u  end  A-o  A-p  A-[  A-]  A-\   A-del A-end A-pgdn
-  A-caps home A-s  A-d  A-f  A-g  left down up   rght A-;  A-'  A-ret
-  _      A-z  A-x  A-c  A-v  A-b  A-n  A-m  A-,  A-.  A-/  _                        A-up
-  _      _    _              A-spc          _    _    _    _               A-left A-down A-rght
-)
+;; (
+;; deflayer vims2
+;;   A-esc  A-f1 A-f2 A-f3 A-f4 A-f5 A-f6 A-f7 A-f8 A-f9 A-f10 A-f11 A-f12
+;;   C-A-S-M-1  A-1  A-2  A-3  A-4  A-5  A-6  A-7  A-8  A-9  A-0  A--  A-=  A-bspc A-ins A-home A-pgup
+;;   _      A-q  A-w  A-e  A-r  A-t  A-y  A-u  end  A-o  A-p  A-[  A-]  A-\   A-del A-end A-pgdn
+;;   A-caps home A-s  A-d  A-f  A-g  left down up   rght A-;  A-'  A-ret
+;;   _      A-z  A-x  A-c  A-v  A-b  A-n  A-m  A-,  A-.  A-/  _                        A-up
+;;   _      _    _              A-spc          _    _    _    _               A-left A-down A-rght
+;; )
