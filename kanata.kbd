@@ -91,19 +91,19 @@
   grl	(tap-hold 200 200 grv @lay) ;; @grl功能: 按压~键来固定键盘层
   ;; laf(tap-hold 200 200 lalt @vim) ;; @laf功能: 按压~键来固定键盘层
 
-  laf (multi (release-key alt) (layer-toggle vims)) ;;
+  laf (multi (release-key alt)  (layer-toggle vims)) ;;
   ;; laf2 (multi (release-key alt) (layer-toggle vims2)) ;;
   ;; laf2 (layer-toggle vims2) ;;
-  cls (multi (release-key alt) (layer-toggle capslay)) ;;
+  cls (multi (release-key alt)  (layer-toggle capslay)) ;;
 )
 
 ;;中介:切换vim控制层
 (
 deflayer vims
   A-esc  A-f1 A-f2 A-f3 A-f4 A-f5 A-f6 A-f7 A-f8 A-f9 A-f10 A-f11 A-f12
-  @agrv  A-1  A-2  A-3  A-4  A-5  A-6  A-7  A-8  A-9  A-0  A--  A-=  A-bspc A-ins A-home A-pgup
+  A-grv  A-1  A-2  A-3  A-4  A-5  A-6  A-7  A-8  A-9  A-0  A--  A-=  A-bspc A-ins A-home A-pgup
   @atab  A-q  A-w  A-e  A-r  A-t  A-y  A-u  end  A-o  A-p  A-[  A-]  A-\   A-del A-end A-pgdn
-  A-caps home A-s  A-d  A-f  A-g  left down up   rght A-;  A-'  A-ret
+  @acap  home A-s  A-d  A-f  A-g  left down up   rght A-;  A-'  A-ret
   _      A-z  A-x  A-c  A-v  A-b  A-n  A-m  A-,  A-.  A-/  _                        A-up
   _      _    _              A-spc          _    _    _    _               A-left A-down A-rght
 )
@@ -122,7 +122,7 @@ deflayer vims
   actrl	(tap-hold 200 200(multi lalt lctl) lctl) ;; alt+ctrl键的操作
   ashift(tap-hold 200 200(multi lalt lsft) lsft) ;; alt+shift键的操作
   atab	(multi ralt(macro tab) (layer-toggle switch)) ;; alt+tab键的操作
-  agrv C-S-A-M-1  ;;在垃圾冒险岛里通过alt+`键解决按键不抬起来的问题
+  acap (multi lalt (release-key lmet) (release-key rmet) (release-key lctl)) ;;在垃圾冒险岛里通过alt+`键解决按键不抬起来的问题
 )
 
 
@@ -134,17 +134,17 @@ deflayer capslay
   _    @scnew  @srnu  @screm @scsw _    _    mlft  @msru mrgt  _    _    _    _     _    _    _
   _    @srnl   @srnd  @srnr  _     _    _    @msrl @msrd @msrr _    _    _
   _    C-pgup  C-pgdn _      _     _    _    mbck  _     mfwd  _    _                    _
-  _    _       _                   _               _     _     _    _               _    _    _
+  _    _       @acap               _               _     _     _    _               _    _    _
 )
 
 (defalias
-  srnu	(multi lctl lmet up)
-  srnl	(multi lctl lmet left)
-  srnd	(multi lctl lmet down)
-  srnr	(multi lctl lmet rght)
-  scnew	(multi lctl lmet d)
-  screm	(multi lctl lmet f4)
-  scsw	(multi lsft lmet left)
+  srnu	C-M-up
+  srnl	C-M-left
+  srnd	C-M-down
+  srnr	C-M-rght
+  scnew	C-M-d
+  screm	C-M-f4
+  scsw	S-M-left
   msrr	(mwheel-right 50 120)
   msrl	(mwheel-left 50 120)
   msru	(mwheel-up 50 120)
